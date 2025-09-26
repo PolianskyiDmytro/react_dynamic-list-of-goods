@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import { GoodsList } from './GoodsList';
 import { Good } from './types/Good';
-import { get5First, getGoods, getRed } from './services/getGoods';
-
-// import { getAll, get5First, getRed } from './api/goods';
-// or
-// import * as goodsAPI from './api/goods';
+import { getAll, get5First, getRedGoods } from './api/goods';
 
 export const App: React.FC = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -18,7 +14,7 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="all-button"
-        onClick={() => getGoods().then(setGoods)}
+        onClick={() => getAll().then(setGoods)}
       >
         Load all goods
       </button>
@@ -35,7 +31,7 @@ export const App: React.FC = () => {
         type="button"
         data-cy="red-button"
         onClick={() => {
-          getRed().then(setGoods);
+          getRedGoods().then(setGoods);
         }}
       >
         Load red goods
